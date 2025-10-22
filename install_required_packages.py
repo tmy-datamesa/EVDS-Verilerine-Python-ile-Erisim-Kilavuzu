@@ -3,7 +3,7 @@ from evds import evdsAPI
 import pandas as pd
 from datetime import date
 
-api = evdsAPI("8oRvZm8KVV")
+api = evdsAPI("BURAYA_KENDİ_EVDS_API_ANAHTARINIZI_YAPIŞTIRIN")
 df = api.get_data(
     series=["TP.DK.EUR.A.YTL"],
     startdate="01-01-2013",
@@ -21,3 +21,4 @@ import matplotlib.pyplot as plt
 m["EUR_A_YTL"].plot(title="EUR (Alış, YTL) - Aylık Ortalama")
 plt.xlabel("Tarih"); plt.ylabel("Kur")
 plt.tight_layout(); plt.show()
+
