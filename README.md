@@ -34,7 +34,9 @@ Aşağıdaki komutu terminal veya VS Code/Colab hücresine yaz:
 ```bash
 pip install evds pandas matplotlib
 
-🐍 4️⃣ Python Betiğini Yaz
+---
+
+##🐍 4️⃣ Python Betiğini Yaz
 
 evds_kur_ornek.py dosyasına şu kodu yapıştır:
 
@@ -76,3 +78,11 @@ plt.xlabel("Tarih")
 plt.ylabel("Kur")
 plt.grid(True)
 plt.show()
+
+---
+
+##📚 8️⃣ Kaynaklar
+
+📘 TCMB EVDS Resmî Sitesi
+📦 evds Python Paketi (PyPI)
+🎥 Data Masası YouTube Kanalı
