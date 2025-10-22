@@ -1,0 +1,1 @@
+# EVDS-Verilerine-Python-ile-Eri-im-K-lavuzu-
