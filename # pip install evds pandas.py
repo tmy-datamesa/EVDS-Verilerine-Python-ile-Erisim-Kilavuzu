@@ -3,7 +3,7 @@ from evds import evdsAPI
 import pandas as pd
 from datetime import date
 
-api = evdsAPI("8oRvZm8KVV")
+api = evdsAPI("BURAYA_KENDİ_EVDS_API_ANAHTARINIZI_YAPIŞTIRIN")
 df = api.get_data(
     series=["TP.DK.USD.A.YTL"],
     startdate="01-01-2013",
@@ -15,5 +15,6 @@ df = api.get_data(
 df["Tarih"] = pd.to_datetime(df["Tarih"], dayfirst=True, errors="coerce")
 df = df.sort_values("Tarih")
 df.to_csv("TP.DK.USD.A.YTL_2013_today.csv", index=False, encoding="utf-8-sig")
+
 
 
