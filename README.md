@@ -1,44 +1,43 @@
-# 📊 EVDS Verilerine Python ile Erişim Kılavuzu (Tutorial)
+# 📊 EVDS Verilerine Python ile Erişim Kılavuzu
 
-Merhaba! Bu repo, **Türkiye Cumhuriyet Merkez Bankası’nın Elektronik Veri Dağıtım Sistemi (EVDS)** üzerinden Python ile ekonomik veri çekmeyi öğrenmek isteyenler için hazırlanmıştır.  
-Adım adım anlatımı YouTube’da izleyebilirsin 👇  
-🎥 [EVDS Verilerine Python ile Erişim (Data Masası)](https://youtu.be/BG51rSq9TUE)
-
----
-
-## 🎯 Bu Kılavuzda Ne Öğreneceksin?
-
-1. EVDS API anahtarını nasıl alacağını,  
-2. Python ile EVDS’ye nasıl bağlanacağını,  
-3. İstediğin serileri (örneğin döviz kuru) nasıl çekeceğini,  
-4. Veriyi nasıl düzenleyip CSV’ye kaydedeceğini,  
-5. Sonuçları nasıl grafikleştireceğini öğreneceksin.  
+Bu repo, **Türkiye Cumhuriyet Merkez Bankası (TCMB)** tarafından sunulan **Elektronik Veri Dağıtım Sistemi (EVDS)** API’sine Python üzerinden nasıl erişileceğini adım adım gösterir.  
+Kılavuzun video anlatımı:  
+🎥 [YouTube: EVDS Verilerine Python ile Erişim (Data Masası)](https://youtu.be/BG51rSq9TUE)
 
 ---
 
-## 🧩 1️⃣ API Anahtarı Almak
+## 🎯 Amaç
+
+Bu proje ile EVDS API üzerinden ekonomik verileri (örneğin döviz kurları, faiz oranları, endeksler vb.) Python kullanarak çekmeyi, düzenlemeyi ve analiz etmeyi öğreneceksin.
+
+---
+
+## 🧩 1️⃣ API Anahtarı Alma
 
 1. [EVDS Resmî Sitesine Git →](https://evds2.tcmb.gov.tr/)
-2. Üye ol veya hesabınla giriş yap.
-3. Profil sayfandan bir **API Anahtarı (API Key)** oluştur.
-4. Bu anahtarı kodda kullanacağız.  
+2. Giriş yap veya yeni bir hesap oluştur.
+3. Profil sayfandan bir **API Key (anahtar)** oluştur.
+4. Bu anahtarı kodda `YOUR_API_KEY` olarak kullanacaksın.
 
-> 🔒 **Uyarı:** Anahtarını kimseyle paylaşma. Kodu paylaşırken `YOUR_API_KEY` şeklinde bırakabilirsin.
+> 🔐 **Not:** API anahtarını paylaşma. Kodunu GitHub’a yüklerken gizli tut.
 
 ---
 
-## 💻 2️⃣ Gerekli Kütüphaneleri Kur
+## ⚙️ 2️⃣ Gerekli Kütüphanelerin Kurulumu
 
-Aşağıdaki komutu terminal veya VS Code/Colab hücresine yaz:
+Terminal veya Colab hücresine şu komutu yaz:
 
 ```bash
 pip install evds pandas matplotlib
-
----
-
-##🐍 4️⃣ Python Betiğini Yaz
-
-evds_kur_ornek.py dosyasına şu kodu yapıştır:
+📂 3️⃣ Proje Klasör Yapısı
+Kodu kopyala
+EVDS-Verilerine-Python-ile-Erisim-Kilavuzu/
+│
+├── evds_kur_ornek.py
+├── TP_DK_EUR_A_YTL_2013_today.csv
+└── README.md
+💻 4️⃣ Python Kod Örneği
+Aşağıdaki kod, 2013’ten bugüne kadar EUR/TL kurunu EVDS API üzerinden çekip CSV’ye kaydeder:
 
 python
 Kodu kopyala
@@ -46,43 +45,70 @@ from evds import evdsAPI
 import pandas as pd
 from datetime import date
 
-# 1️⃣ TCMB EVDS API bağlantısı
+# 1️⃣ EVDS API bağlantısı
 api = evdsAPI("YOUR_API_KEY")
 
-# 2️⃣ Veri serisini tanımla (örnek: EUR/TL kuru)
+# 2️⃣ Veri çekme (EUR / TL kuru)
 df = api.get_data(
     series=["TP.DK.EUR.A.YTL"],
     startdate="01-01-2013",
     enddate=date.today().strftime("%d-%m-%Y"),
 )
 
-# 3️⃣ Tarih sütununu düzenle
+# 3️⃣ Tarih formatlama
 df["Tarih"] = pd.to_datetime(df["Tarih"], dayfirst=True, errors="coerce")
 df = df.sort_values("Tarih")
 
-# 4️⃣ CSV olarak kaydet
+# 4️⃣ CSV çıktısı oluşturma
 df.to_csv("TP_DK_EUR_A_YTL_2013_today.csv", index=False, encoding="utf-8-sig")
 
-
-📈 5️⃣ Grafiği Oluştur
-Veriyi görselleştirmek için:
+# 5️⃣ İlk 5 satırı görüntüle
+print(df.head())
+📈 5️⃣ Grafikle Görselleştirme
+Veriyi çizdirmek için matplotlib kütüphanesini kullanabilirsin:
 
 python
 Kodu kopyala
 import matplotlib.pyplot as plt
 
-plt.figure(figsize=(10, 5))
-plt.plot(df["Tarih"], df["TP.DK.EUR.A.YTL"])
+plt.figure(figsize=(10,5))
+plt.plot(df["Tarih"], df["TP.DK.EUR.A.YTL"], label="EUR/TL")
 plt.title("EUR / TL Döviz Kuru (2013–Günümüz)")
 plt.xlabel("Tarih")
 plt.ylabel("Kur")
 plt.grid(True)
+plt.legend()
 plt.show()
+📊 6️⃣ Örnek Çıktı
+Tarih	TP.DK.EUR.A.YTL
+2013-01-02	2.33
+2013-01-03	2.34
+2013-01-04	2.34
+...	...
 
----
+💡 7️⃣ Farklı Serilerle Denemeler
+Veri Türü	EVDS Kodu
+USD / TL Döviz Kuru	TP.DK.USD.A.YTL
+TÜFE (Genel)	TP.FG.J0
+Faiz Oranları	TP.KK.MB.AO
+Sanayi Üretim Endeksi	TP.SUE.A
 
-##📚 8️⃣ Kaynaklar
+🔍 Farklı serileri öğrenmek için EVDS Seri Pazarı sayfasına göz atabilirsin.
 
+🧠 8️⃣ Sık Sorulan Sorular
+❓ API Key geçersiz diyor, ne yapmalıyım?
+→ EVDS hesabından yeni bir anahtar oluştur. Kopyalarken boşluk kalmadığından emin ol.
+
+❓ Veri çekilmiyor, neden olabilir?
+→ Seri kodunu doğru girdiğinden emin ol (büyük/küçük harf ve noktalama farkı önemlidir).
+
+❓ CSV dosyası Türkçe karakter hatası veriyor.
+→ encoding="utf-8-sig" parametresi eklenmeli.
+
+📚 Kaynaklar
 📘 TCMB EVDS Resmî Sitesi
+
 📦 evds Python Paketi (PyPI)
+
 🎥 Data Masası YouTube Kanalı
+
