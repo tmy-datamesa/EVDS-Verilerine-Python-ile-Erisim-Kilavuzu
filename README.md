@@ -128,18 +128,6 @@ plt.show()
 - [📦 evds Python Paketi (PyPI)](https://pypi.org/project/evds/)
 - [🎥 Data Masası YouTube Kanalı](https://www.youtube.com/@DataMasasi)
 
----
 
-## 🧩 Hazırlayan
-
-**Data Masası**  
-🎓 *Uygulamalı Veri Analizi, SQL, BigQuery ve Python eğitim içerikleriyle veri dünyasını birlikte keşfediyoruz.*  
-📺 [YouTube Kanalı](https://www.youtube.com/@DataMasasi)  
-💼 [LinkedIn – Tümay Turhan](https://www.linkedin.com/in/tumayturhan)
-
----
-
-⭐ **Projeyi beğendiysen repo’yu star’lamayı unutma!**  
-Desteklerin, açık kaynak içeriklerin devamı için büyük motivasyon kaynağıdır 🚀
 
 
