@@ -29,18 +29,16 @@ Terminal veya Colab hücresine şu komutu yaz:
 
 ```bash
 pip install evds pandas matplotlib
-📂 3️⃣ Proje Klasör Yapısı
-Kodu kopyala
-EVDS-Verilerine-Python-ile-Erisim-Kilavuzu/
-│
-├── evds_kur_ornek.py
-├── TP_DK_EUR_A_YTL_2013_today.csv
-└── README.md
-💻 4️⃣ Python Kod Örneği
-Aşağıdaki kod, 2013’ten bugüne kadar EUR/TL kurunu EVDS API üzerinden çekip CSV’ye kaydeder:
+```
 
-python
-Kodu kopyala
+---
+
+
+## 💻 4️⃣ Python Kod Örneği
+
+Aşağıdaki kod, **2013’ten bugüne kadar EUR/TL kurunu** EVDS API üzerinden çekip CSV’ye kaydeder:
+
+```python
 from evds import evdsAPI
 import pandas as pd
 from datetime import date
@@ -64,11 +62,15 @@ df.to_csv("TP_DK_EUR_A_YTL_2013_today.csv", index=False, encoding="utf-8-sig")
 
 # 5️⃣ İlk 5 satırı görüntüle
 print(df.head())
-📈 5️⃣ Grafikle Görselleştirme
-Veriyi çizdirmek için matplotlib kütüphanesini kullanabilirsin:
+```
 
-python
-Kodu kopyala
+---
+
+## 📈 5️⃣ Grafikle Görselleştirme
+
+Veriyi çizdirmek için `matplotlib` kütüphanesini kullanabilirsin:
+
+```python
 import matplotlib.pyplot as plt
 
 plt.figure(figsize=(10,5))
@@ -79,36 +81,65 @@ plt.ylabel("Kur")
 plt.grid(True)
 plt.legend()
 plt.show()
-📊 6️⃣ Örnek Çıktı
-Tarih	TP.DK.EUR.A.YTL
-2013-01-02	2.33
-2013-01-03	2.34
-2013-01-04	2.34
-...	...
+```
 
-💡 7️⃣ Farklı Serilerle Denemeler
-Veri Türü	EVDS Kodu
-USD / TL Döviz Kuru	TP.DK.USD.A.YTL
-TÜFE (Genel)	TP.FG.J0
-Faiz Oranları	TP.KK.MB.AO
-Sanayi Üretim Endeksi	TP.SUE.A
+---
 
-🔍 Farklı serileri öğrenmek için EVDS Seri Pazarı sayfasına göz atabilirsin.
+## 📊 6️⃣ Örnek Çıktı
 
-🧠 8️⃣ Sık Sorulan Sorular
-❓ API Key geçersiz diyor, ne yapmalıyım?
+| Tarih | TP.DK.EUR.A.YTL |
+|-------|------------------|
+| 2013-01-02 | 2.33 |
+| 2013-01-03 | 2.34 |
+| 2013-01-04 | 2.34 |
+| ... | ... |
+
+---
+
+## 💡 7️⃣ Farklı Serilerle Denemeler
+
+| Veri Türü | EVDS Kodu |
+|------------|------------|
+| USD / TL Döviz Kuru | `TP.DK.USD.A.YTL` |
+| TÜFE (Genel) | `TP.FG.J0` |
+| Faiz Oranları | `TP.KK.MB.AO` |
+| Sanayi Üretim Endeksi | `TP.SUE.A` |
+
+> 🔍 Farklı serileri öğrenmek için [EVDS Seri Pazarı](https://evds2.tcmb.gov.tr/index.php?/evds/serieMarket) sayfasına göz atabilirsin.
+
+---
+
+## 🧠 8️⃣ Sık Sorulan Sorular
+
+**❓ API Key geçersiz diyor, ne yapmalıyım?**  
 → EVDS hesabından yeni bir anahtar oluştur. Kopyalarken boşluk kalmadığından emin ol.
 
-❓ Veri çekilmiyor, neden olabilir?
+**❓ Veri çekilmiyor, neden olabilir?**  
 → Seri kodunu doğru girdiğinden emin ol (büyük/küçük harf ve noktalama farkı önemlidir).
 
-❓ CSV dosyası Türkçe karakter hatası veriyor.
-→ encoding="utf-8-sig" parametresi eklenmeli.
+**❓ CSV dosyası Türkçe karakter hatası veriyor.**  
+→ `encoding="utf-8-sig"` parametresi eklenmeli.
 
-📚 Kaynaklar
-📘 TCMB EVDS Resmî Sitesi
+---
 
-📦 evds Python Paketi (PyPI)
+## 📚 Kaynaklar
 
-🎥 Data Masası YouTube Kanalı
+- [📘 TCMB EVDS Resmî Sitesi](https://evds2.tcmb.gov.tr/)
+- [📦 evds Python Paketi (PyPI)](https://pypi.org/project/evds/)
+- [🎥 Data Masası YouTube Kanalı](https://www.youtube.com/@DataMasasi)
+
+---
+
+## 🧩 Hazırlayan
+
+**Data Masası**  
+🎓 *Uygulamalı Veri Analizi, SQL, BigQuery ve Python eğitim içerikleriyle veri dünyasını birlikte keşfediyoruz.*  
+📺 [YouTube Kanalı](https://www.youtube.com/@DataMasasi)  
+💼 [LinkedIn – Tümay Turhan](https://www.linkedin.com/in/tumayturhan)
+
+---
+
+⭐ **Projeyi beğendiysen repo’yu star’lamayı unutma!**  
+Desteklerin, açık kaynak içeriklerin devamı için büyük motivasyon kaynağıdır 🚀
+
 
