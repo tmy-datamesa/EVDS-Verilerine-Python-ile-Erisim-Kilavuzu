@@ -2,7 +2,6 @@
 
 Bu repo, **Türkiye Cumhuriyet Merkez Bankası (TCMB)** tarafından sunulan **Elektronik Veri Dağıtım Sistemi (EVDS)** API’sine Python üzerinden nasıl erişileceğini adım adım gösterir.  
 Kılavuzun video anlatımı:  
-🎥 [YouTube: EVDS Verilerine Python ile Erişim (Data Masası)](https://youtu.be/BG51rSq9TUE)
 
 ---
 
